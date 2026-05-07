@@ -23,6 +23,8 @@ namespace TD_Shooter.GameGrid
             }
             LevelInstance = this;
 
+            var occupationDetectionThreshold = 0.49f;
+
             GridNodes = new GridNode[gridProperties.gridWidth, gridProperties.gridHeight];
             for (var x = 0; x < gridProperties.gridWidth; x++)
             for (var y = 0; y < gridProperties.gridHeight; y++)
@@ -30,7 +32,14 @@ namespace TD_Shooter.GameGrid
                 var nodeWorldX = transform.position.x + x * gridProperties.cellSize + gridProperties.cellSize / 2f;
                 var nodeWorldZ = transform.position.z - y * gridProperties.cellSize - gridProperties.cellSize / 2f;
 
-                GridNodes[x, y] = new GridNode(new Vector3(nodeWorldX, 0, nodeWorldZ), x, y);
+                var gridNode = new GridNode(new Vector3(nodeWorldX, 0, nodeWorldZ), x, y);
+
+                if(Physics.OverlapBox(gridNode.worldPosition, Vector3.one * occupationDetectionThreshold, Quaternion.identity, gridProperties.nodeOccupationLayer).Length > 0)
+                {
+                    gridNode.occupied = true;
+                }
+
+                GridNodes[x, y] = gridNode;
             }
         }
 
