@@ -1,9 +1,12 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "GameGrid/GridProperties")]
-public class GridProperties : ScriptableObject
+namespace TD_Shooter.GameGrid
 {
-    public float gridWidth = 10;
-    public float gridHeight = 10;
-    public float cellSize = 1;
+    [CreateAssetMenu(menuName = "GameGrid/GridProperties")]
+    public class GridProperties : ScriptableObject
+    {
+        public int gridWidth = 1;
+        public int gridHeight = 1;
+        public float cellSize = 1;
+    }
 }

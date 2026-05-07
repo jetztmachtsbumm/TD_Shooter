@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77eac058ad7cc9f44a4895831ae3b87a, type: 3}
   m_Name: DefaultGridProperties
   m_EditorClassIdentifier: Assembly-CSharp::GridProperties
-  gridWidth: 100
-  gridHeight: 100
-  cellSize: 5
+  gridWidth: 10
+  gridHeight: 10
+  cellSize: 1
